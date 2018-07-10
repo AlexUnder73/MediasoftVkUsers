@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">VK Search</string>
+    <string name="search_id">Поиск по id</string>
+    <string name="search_name">Поиск по Имени</string>
+    <string name="search">Поиск</string>
+    <string name="user_id">userId</string>
+    <string name="btn_back">Back</string>
+</resources>
