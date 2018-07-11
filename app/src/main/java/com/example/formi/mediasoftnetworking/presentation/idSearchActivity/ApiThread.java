@@ -3,12 +3,16 @@ package com.example.formi.mediasoftnetworking.presentation.idSearchActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Looper;
+import android.util.Log;
 
 import com.example.formi.mediasoftnetworking.data.net.Controller;
 import com.example.formi.mediasoftnetworking.domain.model.User;
 import com.example.formi.mediasoftnetworking.other.Constants;
 
 import java.io.IOException;
+import java.util.List;
+
+import retrofit2.Response;
 
 public class ApiThread extends Thread {
 
@@ -28,18 +32,15 @@ public class ApiThread extends Thread {
     @Override
     public void run() {
         try {
-            if(Controller.getApi()
+            Response<User> response = Controller.getApi()
                     .getUser(id, Constants.VkApiConstants.VERSION, Constants.VkApiConstants.SERVER_ACCESS_TOKEN, Constants.VkApiConstants.FIELDS)
-                    .execute().isSuccessful()) {
-                User user = Controller.getApi()
-                        .getUser(id, Constants.VkApiConstants.VERSION, Constants.VkApiConstants.SERVER_ACCESS_TOKEN, Constants.VkApiConstants.FIELDS)
-                        .execute().body();
+                    .execute();
+            if(response.isSuccessful()) {
+                User user = response.body();
                 sendUserCallback.sendUser(user);
-            }else{
-                sendUserCallback.failMessage();
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            sendUserCallback.failMessage();
         }
     }
 }

@@ -76,7 +76,7 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     public List<User> getUserList(){
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         List<User> users = new ArrayList<>();
 
         Cursor cursor = db.rawQuery("SELECT * FROM " + Constants.DataBase.TableUsers.TABLE_NAME, null);

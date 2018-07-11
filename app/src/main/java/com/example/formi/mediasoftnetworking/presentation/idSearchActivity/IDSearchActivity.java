@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -89,17 +90,23 @@ public class IDSearchActivity extends AppCompatActivity {
 
                 @Override
                 public void failMessage() {
-                    AlertDialog.Builder adBuilder = new AlertDialog.Builder(IDSearchActivity.this)
-                            .setTitle("Ошибка")
-                            .setMessage("Что-то пошло не так. Возможная проблема - отсутствие интернет-соединения.")
-                            .setPositiveButton("ОК", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.cancel();
-                                }
-                            });
-                    AlertDialog alertDialog = adBuilder.create();
-                    alertDialog.show();
+                    IDSearchActivity.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            AlertDialog.Builder adBuilder = new AlertDialog.Builder(IDSearchActivity.this)
+                                    .setTitle("Ошибка")
+                                    .setMessage("Что-то пошло не так. Возможная проблема - отсутствие интернет-соединения.")
+                                    .setPositiveButton("ОК", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.cancel();
+                                            switchLoader(false);
+                                        }
+                                    });
+                            AlertDialog alertDialog = adBuilder.create();
+                            alertDialog.show();
+                        }
+                    });
                 }
             }).start();
                     /*Controller.getApi()
