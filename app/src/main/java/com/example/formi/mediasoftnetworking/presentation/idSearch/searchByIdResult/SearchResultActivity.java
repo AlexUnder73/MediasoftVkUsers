@@ -32,12 +32,7 @@ public class SearchResultActivity extends AppCompatActivity {
 
         getResult(user);
 
-        findViewById(R.id.btnBack).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SearchResultActivity.this, IDSearchActivity.class));
-            }
-        });
+        findViewById(R.id.btnBack).setOnClickListener(v -> startActivity(new Intent(SearchResultActivity.this, IDSearchActivity.class)));
 
     }
 

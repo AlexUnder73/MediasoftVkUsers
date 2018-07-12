@@ -29,17 +29,7 @@ public class MainActivity extends AppCompatActivity {
         btnNameSearch.setOnClickListener(onNameSearchClickListener);
     }
 
-    View.OnClickListener onIdSearchClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            startActivity(new Intent(MainActivity.this, IDSearchActivity.class));
-        }
-    };
+    View.OnClickListener onIdSearchClickListener = v -> startActivity(new Intent(MainActivity.this, IDSearchActivity.class));
 
-    View.OnClickListener onNameSearchClickListener = new View.OnClickListener(){
-        @Override
-        public void onClick(View v) {
-            startActivity(new Intent(MainActivity.this, NameSearchActivity.class));
-        }
-    };
+    View.OnClickListener onNameSearchClickListener = v -> startActivity(new Intent(MainActivity.this, NameSearchActivity.class));
 }

@@ -1,4 +1,4 @@
-package com.example.formi.mediasoftnetworking.presentation.idSearch;
+/*package com.example.formi.mediasoftnetworking.presentation.idSearch;
 
 import com.example.formi.mediasoftnetworking.data.net.Controller;
 import com.example.formi.mediasoftnetworking.domain.model.id.User;
@@ -37,4 +37,4 @@ public class ApiThread extends Thread {
             sendUserCallback.failMessage();
         }
     }
-}
+}*/

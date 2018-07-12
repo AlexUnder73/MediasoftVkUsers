@@ -76,14 +76,11 @@ public class RequestsAdapter extends RecyclerView.Adapter<RequestsAdapter.Reques
             btnDelete = itemView.findViewById(R.id.btnDelete);
             btnDelete.setVisibility(View.VISIBLE);
 
-            btnDelete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(onDeleteClickListenerInstance != null) {
-                        int position = getAdapterPosition();
-                        if(position != RecyclerView.NO_POSITION) {
-                            onDeleteClickListenerInstance.deleteFromDb(position);
-                        }
+            btnDelete.setOnClickListener(v -> {
+                if(onDeleteClickListenerInstance != null) {
+                    int position = getAdapterPosition();
+                    if(position != RecyclerView.NO_POSITION) {
+                        onDeleteClickListenerInstance.deleteFromDb(position);
                     }
                 }
             });

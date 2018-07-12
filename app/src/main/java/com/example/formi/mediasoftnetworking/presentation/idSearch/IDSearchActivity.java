@@ -19,9 +19,19 @@ import android.widget.TextView;
 
 import com.example.formi.mediasoftnetworking.R;
 import com.example.formi.mediasoftnetworking.data.db.DbHelper;
+import com.example.formi.mediasoftnetworking.data.net.Controller;
 import com.example.formi.mediasoftnetworking.domain.model.id.User;
+import com.example.formi.mediasoftnetworking.domain.model.name.SearchResult;
+import com.example.formi.mediasoftnetworking.other.Constants;
 import com.example.formi.mediasoftnetworking.presentation.idSearch.requests.RequestsActivity;
 import com.example.formi.mediasoftnetworking.presentation.idSearch.searchByIdResult.SearchResultActivity;
+
+import java.util.Observable;
+
+import io.reactivex.SingleObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class IDSearchActivity extends AppCompatActivity {
     public static final String EXTRA_USER = "extra_user";
@@ -59,12 +69,7 @@ public class IDSearchActivity extends AppCompatActivity {
         txtAllReqs.setOnClickListener(onAllRequestsClickListener);
     }
 
-    View.OnClickListener onAllRequestsClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            startActivity(new Intent(IDSearchActivity.this, RequestsActivity.class));
-        }
-    };
+    View.OnClickListener onAllRequestsClickListener = v -> startActivity(new Intent(IDSearchActivity.this, RequestsActivity.class));
 
     View.OnClickListener onSearchClickListener = new View.OnClickListener() {
         @Override
@@ -73,18 +78,57 @@ public class IDSearchActivity extends AppCompatActivity {
             String id = editUserId.getText().toString().trim();
 
             if(id.isEmpty()){
-                Snackbar.make(btnSearch, "id не может быть пустым", Snackbar.LENGTH_INDEFINITE).setActionTextColor(ContextCompat.getColor(IDSearchActivity.this, R.color.colorPrimary)).setAction("OK", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                    }
-                }).show();
+                Snackbar.make(btnSearch, "id не может быть пустым", Snackbar.LENGTH_INDEFINITE).setActionTextColor(ContextCompat.getColor(IDSearchActivity.this, R.color.colorPrimary)).setAction("OK", v1 -> {}).show();
                 switchLoader(false);
                 return;
             }
 
+            Controller.getVkApi().getUserById(id, Constants.VkApiConstants.VERSION, Constants.VkApiConstants.SERVER_ACCESS_TOKEN, Constants.VkApiConstants.FIELDS)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new SingleObserver<User>() {
+                        @Override
+                        public void onSubscribe(Disposable d) {
+
+                        }
+
+                        @Override
+                        public void onSuccess(User user) {
+                            if (user != null) {
+                                if(user.getResponse() != null){
+                                    Intent intent = new Intent(IDSearchActivity.this, SearchResultActivity.class);
+                                    intent.putExtra(EXTRA_USER, user);
+                                    dbHelper.addToDataBase(user);
+                                    dbHelper.showDataToLogs();
+                                    startActivity(intent);
+                                }else{
+                                    Snackbar.make(btnSearch, "Пользователь с данным id не найден", Snackbar.LENGTH_INDEFINITE).setActionTextColor(ContextCompat.getColor(IDSearchActivity.this, R.color.colorPrimary)).setAction("OK", new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            }}).show();
+                                    switchLoader(false);
+                                    editUserId.setText("");
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            AlertDialog.Builder adBuilder = new AlertDialog.Builder(IDSearchActivity.this)
+                                    .setTitle("Ошибка")
+                                    .setMessage("Что-то пошло не так. Возможная проблема - отсутствие интернет-соединения.")
+                                    .setCancelable(false)
+                                    .setPositiveButton("ОК", (dialog, which) -> {
+                                        dialog.cancel();
+                                        switchLoader(false);
+                                    });
+                            AlertDialog alertDialog = adBuilder.create();
+                            alertDialog.show();
+                        }
+                    });
+
             // execute-method
-            new ApiThread(id, new ApiThread.SendUserCallback() {
+            /*new ApiThread(id, new ApiThread.SendUserCallback() {
                 @Override
                 public void sendUser(User user) {
                     if (user != null) {
@@ -132,7 +176,7 @@ public class IDSearchActivity extends AppCompatActivity {
                         }
                     });
                 }
-            }).start();
+            }).start();*/
 
             // .enqueue-method
             /*Controller.getVkApi()
@@ -178,9 +222,11 @@ public class IDSearchActivity extends AppCompatActivity {
         if(flag){
             progBar.setVisibility(View.VISIBLE);
             linearLayout.setVisibility(View.GONE);
+            txtAllReqs.setVisibility(View.GONE);
         }else{
             progBar.setVisibility(View.GONE);
             linearLayout.setVisibility(View.VISIBLE);
+            txtAllReqs.setVisibility(View.VISIBLE);
         }
     }
 

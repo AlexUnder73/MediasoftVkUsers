@@ -23,6 +23,10 @@ import com.example.formi.mediasoftnetworking.other.Constants;
 import com.example.formi.mediasoftnetworking.presentation.nameSearch.adapter.CustomSpinnerAdapter;
 import com.example.formi.mediasoftnetworking.presentation.nameSearch.searchByNameResult.SearchResultByNameActivity;
 
+import io.reactivex.SingleObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -74,8 +78,57 @@ public class NameSearchActivity extends AppCompatActivity {
             userAgeTo = edtAgeTo.getText().toString().trim();
             userName = edtName.getText().toString().trim();
 
+            // RxJava-method
+            Controller.getVkApi().getUsersByName(userName,
+                    userCountryIndex,
+                    userCity,
+                    userSexIndex,
+                    userAgeFrom,
+                    userAgeTo,
+                    userCount,
+                    userSortIndex,
+                    Constants.VkApiConstants.VERSION,
+                    Constants.VkApiConstants.USER_ACCESS_TOKEN,
+                    Constants.VkApiConstants.FIELDS)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new SingleObserver<SearchResult>() {
+                        @Override
+                        public void onSubscribe(Disposable d) {
+
+                        }
+
+                        @Override
+                        public void onSuccess(SearchResult searchResult) {
+                            if(searchResult != null){
+                                if(!searchResult.getResponse().getItems().isEmpty()){
+                                    Intent intent = new Intent(NameSearchActivity.this, SearchResultByNameActivity.class);
+                                    intent.putExtra(EXTRA_SEARCH_RESULT, searchResult);
+                                    startActivity(intent);
+                                }else{
+                                    Snackbar.make(btnSearch, "Не найдено ни одного пользователя", Snackbar.LENGTH_INDEFINITE).setActionTextColor(ContextCompat.getColor(NameSearchActivity.this, R.color.colorPrimary)).setAction("OK", v -> {}).show();
+                                    switchLoader(false);
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            AlertDialog.Builder adBuilder = new AlertDialog.Builder(NameSearchActivity.this)
+                                    .setTitle("Ошибка")
+                                    .setMessage("Что-то пошло не так. Возможная проблема - отсутствие интернет-соединения.")
+                                    .setCancelable(false)
+                                    .setPositiveButton("ОК", (dialog, which) -> {
+                                        dialog.cancel();
+                                        switchLoader(false);
+                                    });
+                            AlertDialog alertDialog = adBuilder.create();
+                            alertDialog.show();
+                        }
+                    });
+
             // execute-method
-            new ApiThread(userName,
+            /*new ApiThread(userName,
                     userCountryIndex,
                     userCity,
                     userSexIndex,
@@ -124,7 +177,7 @@ public class NameSearchActivity extends AppCompatActivity {
                             alertDialog.show();
                         }
                     })
-                    .start();
+                    .start();*/
 
 
             // enqueue-method

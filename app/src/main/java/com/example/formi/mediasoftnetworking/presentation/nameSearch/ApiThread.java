@@ -1,4 +1,4 @@
-package com.example.formi.mediasoftnetworking.presentation.nameSearch;
+/*package com.example.formi.mediasoftnetworking.presentation.nameSearch;
 
 import com.example.formi.mediasoftnetworking.data.net.Controller;
 import com.example.formi.mediasoftnetworking.domain.model.name.SearchResult;
@@ -64,4 +64,4 @@ public class ApiThread extends Thread {
             sendSearchResultCallback.failMessage();
         }
     }
-}
+}*/
