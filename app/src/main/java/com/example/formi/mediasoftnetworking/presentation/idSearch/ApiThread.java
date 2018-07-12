@@ -1,16 +1,10 @@
-package com.example.formi.mediasoftnetworking.presentation.idSearchActivity;
-
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.os.Looper;
-import android.util.Log;
+package com.example.formi.mediasoftnetworking.presentation.idSearch;
 
 import com.example.formi.mediasoftnetworking.data.net.Controller;
-import com.example.formi.mediasoftnetworking.domain.model.User;
+import com.example.formi.mediasoftnetworking.domain.model.id.User;
 import com.example.formi.mediasoftnetworking.other.Constants;
 
 import java.io.IOException;
-import java.util.List;
 
 import retrofit2.Response;
 
@@ -32,8 +26,8 @@ public class ApiThread extends Thread {
     @Override
     public void run() {
         try {
-            Response<User> response = Controller.getApi()
-                    .getUser(id, Constants.VkApiConstants.VERSION, Constants.VkApiConstants.SERVER_ACCESS_TOKEN, Constants.VkApiConstants.FIELDS)
+            Response<User> response = Controller.getVkApi()
+                    .getUserById(id, Constants.VkApiConstants.VERSION, Constants.VkApiConstants.SERVER_ACCESS_TOKEN, Constants.VkApiConstants.FIELDS)
                     .execute();
             if(response.isSuccessful()) {
                 User user = response.body();

@@ -1,4 +1,4 @@
-package com.example.formi.mediasoftnetworking.presentation.searchResultActivity;
+package com.example.formi.mediasoftnetworking.presentation.idSearch.searchByIdResult;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,8 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.formi.mediasoftnetworking.R;
-import com.example.formi.mediasoftnetworking.domain.model.User;
-import com.example.formi.mediasoftnetworking.presentation.idSearchActivity.IDSearchActivity;
+import com.example.formi.mediasoftnetworking.domain.model.id.User;
+import com.example.formi.mediasoftnetworking.presentation.idSearch.IDSearchActivity;
 import com.squareup.picasso.Picasso;
 
 public class SearchResultActivity extends AppCompatActivity {
@@ -22,7 +22,7 @@ public class SearchResultActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_result);
+        setContentView(R.layout.activity_search_result_by_id);
 
         user = (User) getIntent().getSerializableExtra(IDSearchActivity.EXTRA_USER);
 
@@ -42,8 +42,8 @@ public class SearchResultActivity extends AppCompatActivity {
     }
 
     private void getResult(User user){
-        Picasso.with(SearchResultActivity.this).load(user.getUser().get(0).getImgURL()).placeholder(R.drawable.place_holder).error(R.drawable.error).into(imgPhoto);
-        txtFirstName.setText(user.getUser().get(0).getFirstName());
-        txtLastName.setText(user.getUser().get(0).getLastName());
+        Picasso.with(SearchResultActivity.this).load(user.getResponse().get(0).getImgURL()).placeholder(R.drawable.place_holder).error(R.drawable.error).into(imgPhoto);
+        txtFirstName.setText(user.getResponse().get(0).getFirstName());
+        txtLastName.setText(user.getResponse().get(0).getLastName());
     }
 }

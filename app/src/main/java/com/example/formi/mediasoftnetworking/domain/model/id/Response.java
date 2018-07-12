@@ -1,4 +1,4 @@
-package com.example.formi.mediasoftnetworking.domain.model;
+package com.example.formi.mediasoftnetworking.domain.model.id;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -9,18 +9,23 @@ public class Response implements Serializable {
     @SerializedName("id")
     @Expose
     private long id;
-
     @SerializedName("first_name")
     @Expose
     private String firstName;
-
     @SerializedName("last_name")
     @Expose
     private String lastName;
-
     @SerializedName("photo_200")
     @Expose
     private String imgURL;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -44,13 +49,5 @@ public class Response implements Serializable {
 
     public void setImgURL(String imgURL) {
         this.imgURL = imgURL;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 }

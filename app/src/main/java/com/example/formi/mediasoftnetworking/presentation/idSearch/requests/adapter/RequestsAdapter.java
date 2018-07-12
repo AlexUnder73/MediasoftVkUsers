@@ -1,4 +1,4 @@
-package com.example.formi.mediasoftnetworking.presentation.requestsActivity.adapter;
+package com.example.formi.mediasoftnetworking.presentation.idSearch.requests.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.formi.mediasoftnetworking.R;
-import com.example.formi.mediasoftnetworking.domain.model.User;
+import com.example.formi.mediasoftnetworking.domain.model.id.User;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -47,9 +47,9 @@ public class RequestsAdapter extends RecyclerView.Adapter<RequestsAdapter.Reques
     public void onBindViewHolder(@NonNull RequestsViewHolder holder, int position) {
         User user = userList.get(position);
 
-        String firstName = user.getUser().get(0).getFirstName();
-        String lastName = user.getUser().get(0).getLastName();
-        String imgUrl = user.getUser().get(0).getImgURL();
+        String firstName = user.getResponse().get(0).getFirstName();
+        String lastName = user.getResponse().get(0).getLastName();
+        String imgUrl = user.getResponse().get(0).getImgURL();
 
         holder.txtFirstNameItem.setText(firstName);
         holder.txtLastNameItem.setText(lastName);
@@ -74,6 +74,7 @@ public class RequestsAdapter extends RecyclerView.Adapter<RequestsAdapter.Reques
             txtFirstNameItem = itemView.findViewById(R.id.txtFirstNameItem);
             txtLastNameItem = itemView.findViewById(R.id.txtLastNameItem);
             btnDelete = itemView.findViewById(R.id.btnDelete);
+            btnDelete.setVisibility(View.VISIBLE);
 
             btnDelete.setOnClickListener(new View.OnClickListener() {
                 @Override

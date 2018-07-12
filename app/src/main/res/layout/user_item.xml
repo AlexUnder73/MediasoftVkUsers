@@ -5,8 +5,8 @@
     app:cardBackgroundColor="@color/colorPrimary"
     app:cardElevation="8dp"
     app:cardCornerRadius="5dp"
-    android:layout_marginRight="8dp"
-    android:layout_marginLeft="8dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginLeft="16dp"
     android:layout_marginTop="8dp"
     android:layout_height="166dp">
 
@@ -52,6 +52,7 @@
             android:background="@drawable/btn_style_white"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:visibility="gone"
             android:layout_marginEnd="8dp"
             android:layout_alignParentEnd="true" />
 

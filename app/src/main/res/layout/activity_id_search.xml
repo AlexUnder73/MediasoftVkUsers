@@ -33,8 +33,17 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/txtAllRequests"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <ProgressBar
-        android:id="@+id/progBar"
+        android:id="@+id/idProgBar"
         android:layout_centerInParent="true"
         android:visibility="invisible"
         android:layout_width="wrap_content"

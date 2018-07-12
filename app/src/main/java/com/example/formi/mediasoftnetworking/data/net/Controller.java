@@ -1,6 +1,6 @@
 package com.example.formi.mediasoftnetworking.data.net;
 
-import com.example.formi.mediasoftnetworking.data.net.callback.VkApiIdSearch;
+import com.example.formi.mediasoftnetworking.data.net.callback.VkSearchApi;
 import com.example.formi.mediasoftnetworking.other.Constants;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Controller {
 
-    public static VkApiIdSearch getApi(){
+    public static VkSearchApi getVkApi(){
 
         Gson gson = new GsonBuilder()
                 .setLenient()
@@ -21,7 +21,7 @@ public class Controller {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
-        VkApiIdSearch vkApi = retrofit.create(VkApiIdSearch.class);
+        VkSearchApi vkApi = retrofit.create(VkSearchApi.class);
 
         return vkApi;
     }

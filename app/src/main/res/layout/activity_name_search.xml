@@ -3,6 +3,210 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ScrollView
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:padding="16dp"
+            android:id="@+id/relLayout"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txtName"
+                android:textSize="24sp"
+                android:textColor="@android:color/black"
+                android:text="@string/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/edtName"
+                android:layout_below="@id/txtName"
+                android:layout_marginTop="8dp"
+                android:inputType="text"
+                android:background="@drawable/spinner_bckgrnd"
+                android:padding="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txtCountry"
+                android:textSize="24sp"
+                android:layout_below="@+id/edtName"
+                android:layout_marginTop="16dp"
+                android:textColor="@android:color/black"
+                android:text="@string/country"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Spinner
+                android:id="@+id/spnCountries"
+                android:layout_marginTop="8dp"
+                android:layout_below="@id/txtCountry"
+                android:background="@drawable/spinner_bckgrnd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown"
+                android:padding="8dp"
+                 />
+
+            <TextView
+                android:id="@+id/txtCity"
+                android:layout_below="@id/spnCountries"
+                android:layout_marginTop="16dp"
+                android:textSize="24sp"
+                android:textColor="@android:color/black"
+                android:text="@string/hometown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/edtCity"
+                android:layout_below="@id/txtCity"
+                android:layout_marginTop="8dp"
+                android:inputType="text"
+                android:background="@drawable/spinner_bckgrnd"
+                android:padding="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txtSex"
+                android:layout_below="@id/edtCity"
+                android:layout_marginTop="16dp"
+                android:textSize="24sp"
+                android:textColor="@android:color/black"
+                android:text="@string/sex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Spinner
+                android:id="@+id/spnSex"
+                android:layout_marginTop="8dp"
+                android:layout_below="@id/txtSex"
+                android:background="@drawable/spinner_bckgrnd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown"
+                android:padding="8dp"
+                />
+
+            <TextView
+                android:id="@+id/txtAge"
+                android:layout_below="@id/spnSex"
+                android:layout_marginTop="16dp"
+                android:textSize="24sp"
+                android:textColor="@android:color/black"
+                android:text="@string/age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:id="@+id/layoutAge"
+                android:layout_below="@id/txtAge"
+                android:layout_width="match_parent"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/edtAgeFrom"
+                    android:maxLength="2"
+                    android:inputType="number"
+                    android:background="@drawable/spinner_bckgrnd"
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:padding="8dp"
+                    android:hint="@string/age_from"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:text="-"
+                    android:textSize="26sp"
+                    android:textColor="@android:color/black"
+                    android:layout_marginStart="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:id="@+id/edtAgeTo"
+                    android:maxLength="2"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/spinner_bckgrnd"
+                    android:inputType="number"
+                    android:padding="8dp"
+                    android:hint="@string/age_to"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtCount"
+                android:layout_below="@id/layoutAge"
+                android:layout_marginTop="16dp"
+                android:textSize="24sp"
+                android:textColor="@android:color/black"
+                android:text="@string/count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Spinner
+                android:id="@+id/spnCount"
+                android:layout_marginTop="8dp"
+                android:layout_below="@id/txtCount"
+                android:background="@drawable/spinner_bckgrnd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown"
+                android:padding="8dp"
+                />
+
+            <TextView
+                android:id="@+id/txtSort"
+                android:layout_below="@id/spnCount"
+                android:layout_marginTop="16dp"
+                android:textSize="24sp"
+                android:textColor="@android:color/black"
+                android:text="@string/sort"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Spinner
+                android:id="@+id/spnSort"
+                android:layout_marginTop="8dp"
+                android:layout_below="@id/txtSort"
+                android:background="@drawable/spinner_bckgrnd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown"
+                android:padding="8dp"
+                />
+
+            <Button
+                android:layout_below="@+id/spnSort"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:padding="16dp"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/btnSearchName"
+                android:text="@string/search"
+                android:background="@drawable/btn_style_orange"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/nameProgBar"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>

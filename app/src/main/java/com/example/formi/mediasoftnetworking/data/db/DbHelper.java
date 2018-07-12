@@ -7,8 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.example.formi.mediasoftnetworking.domain.model.Response;
-import com.example.formi.mediasoftnetworking.domain.model.User;
+import com.example.formi.mediasoftnetworking.domain.model.id.Response;
+import com.example.formi.mediasoftnetworking.domain.model.id.User;
 import com.example.formi.mediasoftnetworking.other.Constants;
 
 import java.util.ArrayList;
@@ -32,9 +32,9 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     public void addToDataBase(User user){
-        if(user.getUser().get(0).getFirstName() == null
-                || user.getUser().get(0).getLastName() == null
-                || user.getUser().get(0).getImgURL() == null){
+        if(user.getResponse().get(0).getFirstName() == null
+                || user.getResponse().get(0).getLastName() == null
+                || user.getResponse().get(0).getImgURL() == null){
             return;
         }
 
@@ -44,7 +44,7 @@ public class DbHelper extends SQLiteOpenHelper {
         if(cursor.moveToFirst()){
             do {
                 long id = cursor.getLong(cursor.getColumnIndex(Constants.DataBase.TableUsers.COLUMN_ID));
-                if(user.getUser().get(0).getId() == id){
+                if(user.getResponse().get(0).getId() == id){
                     return;
                 }
             }while(cursor.moveToNext());
@@ -53,10 +53,10 @@ public class DbHelper extends SQLiteOpenHelper {
 
         ContentValues cv = new ContentValues();
 
-        long userID = user.getUser().get(0).getId();
-        String userFirstName = user.getUser().get(0).getFirstName();
-        String userLastName = user.getUser().get(0).getLastName();
-        String userImgURL = user.getUser().get(0).getImgURL();
+        long userID = user.getResponse().get(0).getId();
+        String userFirstName = user.getResponse().get(0).getFirstName();
+        String userLastName = user.getResponse().get(0).getLastName();
+        String userImgURL = user.getResponse().get(0).getImgURL();
 
         cv.put(Constants.DataBase.TableUsers.COLUMN_ID, userID);
         cv.put(Constants.DataBase.TableUsers.COLUMN_FIRST_NAME, userFirstName);
@@ -95,10 +95,10 @@ public class DbHelper extends SQLiteOpenHelper {
                 response.setLastName(lastName);
                 response.setImgURL(imgURL);
 
-                List<Response> userList = new ArrayList<>();
-                userList.add(response);
+                List<Response> responseList = new ArrayList<>();
+                responseList.add(response);
 
-                user.setUser(userList);
+                user.setResponse(responseList);
                 users.add(user);
             }while(cursor.moveToNext());
         }

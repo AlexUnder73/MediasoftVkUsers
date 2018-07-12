@@ -11,21 +11,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".presentation.mainActivity.MainActivity">
+        <activity android:name=".presentation.main.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.idSearchActivity.IDSearchActivity"
-            android:parentActivityName=".presentation.mainActivity.MainActivity" />
-        <activity android:name=".presentation.nameSearchActivity.NameSearchActivity"
-            android:parentActivityName=".presentation.mainActivity.MainActivity"/>
-        <activity android:name=".presentation.searchResultActivity.SearchResultActivity"
-            android:parentActivityName=".presentation.idSearchActivity.IDSearchActivity"/>
-        <activity android:name=".presentation.requestsActivity.RequestsActivity"
-            android:parentActivityName=".presentation.mainActivity.MainActivity" />
+        <activity android:name=".presentation.idSearch.IDSearchActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".presentation.main.MainActivity" />
+        <activity android:name=".presentation.nameSearch.NameSearchActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".presentation.main.MainActivity"/>
+        <activity android:name=".presentation.idSearch.searchByIdResult.SearchResultActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".presentation.idSearch.IDSearchActivity"/>
+        <activity android:name=".presentation.idSearch.requests.RequestsActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".presentation.idSearch.IDSearchActivity" />
+        <activity android:name=".presentation.nameSearch.searchByNameResult.SearchResultByNameActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".presentation.nameSearch.NameSearchActivity" />
     </application>
 
 </manifest>

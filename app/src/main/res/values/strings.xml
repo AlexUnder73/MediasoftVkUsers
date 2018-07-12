@@ -5,4 +5,43 @@
     <string name="search">Поиск</string>
     <string name="user_id">userId</string>
     <string name="btn_back">Back</string>
+    
+    <string-array name="sort_result" >
+        <item>по популярности</item> <!-- 0 -->
+        <item>по дате регистрации</item> <!-- 1 -->
+    </string-array>
+
+    <string-array name="users_count">
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+    </string-array>
+
+    <string-array name="countries">
+        <item>Россия</item> <!-- 1 -->
+        <item>Украина</item> <!-- 2 -->
+        <item>Беларусь</item> <!-- 3 -->
+        <item>Казахстан</item> <!-- 4 -->
+    </string-array>
+
+    <string name="hometown">Город:</string>
+
+    <string-array name="sex">
+        <item>любой</item> <!-- 0 -->
+        <item>женщина</item> <!-- 1 -->
+        <item>мужчина</item> <!-- 2 -->
+    </string-array>
+
+    <string name="age_from">от</string>
+    <string name="age_to">до</string>
+
+    <string name="country">Страна:</string>
+    <string name="sex">Пол:</string>
+    <string name="age">Возраст:</string>
+    <string name="sort">Сортировать:</string>
+    <string name="count">Число пользователей:</string>
+    <string name="name">Кого ищем:</string>
+
 </resources>
