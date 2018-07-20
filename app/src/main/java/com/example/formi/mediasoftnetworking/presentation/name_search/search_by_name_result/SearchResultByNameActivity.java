@@ -1,4 +1,4 @@
-package com.example.formi.mediasoftnetworking.presentation.nameSearch.searchByNameResult;
+package com.example.formi.mediasoftnetworking.presentation.name_search.search_by_name_result;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,8 +8,8 @@ import android.support.v7.widget.RecyclerView;
 
 import com.example.formi.mediasoftnetworking.R;
 import com.example.formi.mediasoftnetworking.domain.model.name.SearchResult;
-import com.example.formi.mediasoftnetworking.presentation.nameSearch.adapter.NameAdapter;
-import com.example.formi.mediasoftnetworking.presentation.nameSearch.NameSearchActivity;
+import com.example.formi.mediasoftnetworking.presentation.name_search.adapter.NameAdapter;
+import com.example.formi.mediasoftnetworking.presentation.name_search.NameSearchActivity;
 
 public class SearchResultByNameActivity extends AppCompatActivity {
 

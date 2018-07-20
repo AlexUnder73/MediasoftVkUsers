@@ -1,4 +1,4 @@
-package com.example.formi.mediasoftnetworking.presentation.idSearch.requests.adapter;
+package com.example.formi.mediasoftnetworking.presentation.id_search.requests.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

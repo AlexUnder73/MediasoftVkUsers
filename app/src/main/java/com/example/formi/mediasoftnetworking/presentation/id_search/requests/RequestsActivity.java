@@ -1,4 +1,4 @@
-package com.example.formi.mediasoftnetworking.presentation.idSearch.requests;
+package com.example.formi.mediasoftnetworking.presentation.id_search.requests;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,7 +11,7 @@ import com.example.formi.mediasoftnetworking.R;
 import com.example.formi.mediasoftnetworking.data.db.DbHelper;
 import com.example.formi.mediasoftnetworking.domain.model.id.User;
 import com.example.formi.mediasoftnetworking.other.Constants;
-import com.example.formi.mediasoftnetworking.presentation.idSearch.requests.adapter.RequestsAdapter;
+import com.example.formi.mediasoftnetworking.presentation.id_search.requests.adapter.RequestsAdapter;
 
 import java.util.List;
 

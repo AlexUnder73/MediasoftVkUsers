@@ -1,6 +1,5 @@
-package com.example.formi.mediasoftnetworking.presentation.nameSearch;
+package com.example.formi.mediasoftnetworking.presentation.name_search;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -20,16 +19,14 @@ import com.example.formi.mediasoftnetworking.R;
 import com.example.formi.mediasoftnetworking.data.net.Controller;
 import com.example.formi.mediasoftnetworking.domain.model.name.SearchResult;
 import com.example.formi.mediasoftnetworking.other.Constants;
-import com.example.formi.mediasoftnetworking.presentation.nameSearch.adapter.CustomSpinnerAdapter;
-import com.example.formi.mediasoftnetworking.presentation.nameSearch.searchByNameResult.SearchResultByNameActivity;
+import com.example.formi.mediasoftnetworking.presentation.name_search.adapter.CustomSpinnerAdapter;
+import com.example.formi.mediasoftnetworking.presentation.name_search.search_by_name_result.SearchResultByNameActivity;
+//import com.example.formi.mediasoftnetworking.presentation.namesearch.ApiThread;
 
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class NameSearchActivity extends AppCompatActivity {
     public static final String EXTRA_SEARCH_RESULT = "extra_search_result";
@@ -128,15 +125,16 @@ public class NameSearchActivity extends AppCompatActivity {
                     });
 
             // execute-method
-            /*new ApiThread(userName,
+            /*Params params = new Params(userName,
                     userCountryIndex,
                     userCity,
                     userSexIndex,
                     userAgeFrom,
                     userAgeTo,
                     userCount,
-                    userSortIndex,
-                    new ApiThread.SendSearchResultCallback() {
+                    userSortIndex);
+            new ApiThread(params,
+                    new com.example.formi.mediasoftnetworking.presentation.namesearch.ApiThread.SendSearchResultCallback() {
                         @Override
                         public void sendUser(SearchResult searchResult) {
                             if(searchResult != null){
@@ -145,17 +143,14 @@ public class NameSearchActivity extends AppCompatActivity {
                                     intent.putExtra(EXTRA_SEARCH_RESULT, searchResult);
                                     startActivity(intent);
                                 }else{
-                                    NameSearchActivity.this.runOnUiThread(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            Snackbar.make(btnSearch, "Не найдено ни одного пользователя", Snackbar.LENGTH_INDEFINITE).setActionTextColor(ContextCompat.getColor(NameSearchActivity.this, R.color.colorPrimary)).setAction("OK", new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
+                                    NameSearchActivity.this.runOnUiThread(() -> {
+                                        Snackbar.make(btnSearch, "Не найдено ни одного пользователя", Snackbar.LENGTH_INDEFINITE).setActionTextColor(ContextCompat.getColor(NameSearchActivity.this, R.color.colorPrimary)).setAction("OK", new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v1) {
 
-                                                }
-                                            }).show();
-                                            switchLoader(false);
-                                        }
+                                            }
+                                        }).show();
+                                        switchLoader(false);
                                     });
                                 }
                             }

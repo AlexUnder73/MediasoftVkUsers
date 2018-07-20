@@ -8,8 +8,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.formi.mediasoftnetworking.R;
-import com.example.formi.mediasoftnetworking.presentation.idSearch.IDSearchActivity;
-import com.example.formi.mediasoftnetworking.presentation.nameSearch.NameSearchActivity;
+import com.example.formi.mediasoftnetworking.presentation.id_search.IDSearchActivity;
+import com.example.formi.mediasoftnetworking.presentation.name_search.NameSearchActivity;
 
 public class MainActivity extends AppCompatActivity {
 

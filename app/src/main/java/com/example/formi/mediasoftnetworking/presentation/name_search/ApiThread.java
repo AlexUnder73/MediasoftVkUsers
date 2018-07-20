@@ -1,8 +1,9 @@
-/*package com.example.formi.mediasoftnetworking.presentation.nameSearch;
+/*package com.example.formi.mediasoftnetworking.presentation.namesearch;
 
 import com.example.formi.mediasoftnetworking.data.net.Controller;
 import com.example.formi.mediasoftnetworking.domain.model.name.SearchResult;
 import com.example.formi.mediasoftnetworking.other.Constants;
+import com.example.formi.mediasoftnetworking.presentation.namesearch.Params;
 
 import java.io.IOException;
 
@@ -26,15 +27,15 @@ public class ApiThread extends Thread {
     private String userCount;
     private String userSortIndex;
 
-    public ApiThread(String userName, String userCountryIndex, String userCity, String userSexIndex, String userAgeFrom, String userAgeTo, String userCount, String userSortIndex, SendSearchResultCallback sendSearchResultCallback) {
-        this.userName = userName;
-        this.userCountryIndex = userCountryIndex;
-        this.userCity = userCity;
-        this.userSexIndex = userSexIndex;
-        this.userAgeFrom = userAgeFrom;
-        this.userAgeTo = userAgeTo;
-        this.userCount = userCount;
-        this.userSortIndex = userSortIndex;
+    public ApiThread(Params params, SendSearchResultCallback sendSearchResultCallback) {
+        this.userName = params.getUserName();
+        this.userCountryIndex = params.getUserCountryIndex();
+        this.userCity = params.getUserCity();
+        this.userSexIndex = params.getUserSexIndex();
+        this.userAgeFrom = params.getUserAgeFrom();
+        this.userAgeTo = params.getUserAgeTo();
+        this.userCount = params.getUserCount();
+        this.userSortIndex = params.getUserSortIndex();
 
         this.sendSearchResultCallback = sendSearchResultCallback;
     }

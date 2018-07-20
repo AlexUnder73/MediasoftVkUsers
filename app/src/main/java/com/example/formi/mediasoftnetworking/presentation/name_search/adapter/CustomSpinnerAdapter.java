@@ -1,4 +1,4 @@
-package com.example.formi.mediasoftnetworking.presentation.nameSearch.adapter;
+package com.example.formi.mediasoftnetworking.presentation.name_search.adapter;
 
 import android.content.Context;
 import android.graphics.Color;

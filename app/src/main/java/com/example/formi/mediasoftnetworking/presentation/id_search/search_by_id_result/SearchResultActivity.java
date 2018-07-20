@@ -1,16 +1,15 @@
-package com.example.formi.mediasoftnetworking.presentation.idSearch.searchByIdResult;
+package com.example.formi.mediasoftnetworking.presentation.id_search.search_by_id_result;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.formi.mediasoftnetworking.R;
 import com.example.formi.mediasoftnetworking.domain.model.id.User;
-import com.example.formi.mediasoftnetworking.presentation.idSearch.IDSearchActivity;
+import com.example.formi.mediasoftnetworking.presentation.id_search.IDSearchActivity;
 import com.squareup.picasso.Picasso;
 
 public class SearchResultActivity extends AppCompatActivity {

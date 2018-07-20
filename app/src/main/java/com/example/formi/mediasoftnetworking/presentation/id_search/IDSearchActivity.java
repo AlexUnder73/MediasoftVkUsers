@@ -1,6 +1,5 @@
-package com.example.formi.mediasoftnetworking.presentation.idSearch;
+package com.example.formi.mediasoftnetworking.presentation.id_search;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -21,12 +20,10 @@ import com.example.formi.mediasoftnetworking.R;
 import com.example.formi.mediasoftnetworking.data.db.DbHelper;
 import com.example.formi.mediasoftnetworking.data.net.Controller;
 import com.example.formi.mediasoftnetworking.domain.model.id.User;
-import com.example.formi.mediasoftnetworking.domain.model.name.SearchResult;
 import com.example.formi.mediasoftnetworking.other.Constants;
-import com.example.formi.mediasoftnetworking.presentation.idSearch.requests.RequestsActivity;
-import com.example.formi.mediasoftnetworking.presentation.idSearch.searchByIdResult.SearchResultActivity;
-
-import java.util.Observable;
+//import com.example.formi.mediasoftnetworking.presentation.idSearch.ApiThread;
+import com.example.formi.mediasoftnetworking.presentation.id_search.requests.RequestsActivity;
+import com.example.formi.mediasoftnetworking.presentation.id_search.search_by_id_result.SearchResultActivity;
 
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -158,22 +155,19 @@ public class IDSearchActivity extends AppCompatActivity {
 
                 @Override
                 public void failMessage() {
-                    IDSearchActivity.this.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            AlertDialog.Builder adBuilder = new AlertDialog.Builder(IDSearchActivity.this)
-                                    .setTitle("Ошибка")
-                                    .setMessage("Что-то пошло не так. Возможная проблема - отсутствие интернет-соединения.")
-                                    .setPositiveButton("ОК", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            dialog.cancel();
-                                            switchLoader(false);
-                                        }
-                                    });
-                            AlertDialog alertDialog = adBuilder.create();
-                            alertDialog.show();
-                        }
+                    IDSearchActivity.this.runOnUiThread(() -> {
+                        AlertDialog.Builder adBuilder = new AlertDialog.Builder(IDSearchActivity.this)
+                                .setTitle("Ошибка")
+                                .setMessage("Что-то пошло не так. Возможная проблема - отсутствие интернет-соединения.")
+                                .setPositiveButton("ОК", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.cancel();
+                                        switchLoader(false);
+                                    }
+                                });
+                        AlertDialog alertDialog = adBuilder.create();
+                        alertDialog.show();
                     });
                 }
             }).start();*/

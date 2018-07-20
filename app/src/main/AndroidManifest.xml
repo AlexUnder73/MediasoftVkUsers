@@ -19,21 +19,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.idSearch.IDSearchActivity"
+        <activity android:name=".presentation.id_search.IDSearchActivity"
             android:screenOrientation="portrait"
             android:parentActivityName=".presentation.main.MainActivity" />
-        <activity android:name=".presentation.nameSearch.NameSearchActivity"
+        <activity android:name=".presentation.name_search.NameSearchActivity"
             android:screenOrientation="portrait"
             android:parentActivityName=".presentation.main.MainActivity"/>
-        <activity android:name=".presentation.idSearch.searchByIdResult.SearchResultActivity"
+        <activity android:name=".presentation.id_search.search_by_id_result.SearchResultActivity"
             android:screenOrientation="portrait"
-            android:parentActivityName=".presentation.idSearch.IDSearchActivity"/>
-        <activity android:name=".presentation.idSearch.requests.RequestsActivity"
+            android:parentActivityName=".presentation.id_search.IDSearchActivity"/>
+        <activity android:name=".presentation.id_search.requests.RequestsActivity"
             android:screenOrientation="portrait"
-            android:parentActivityName=".presentation.idSearch.IDSearchActivity" />
-        <activity android:name=".presentation.nameSearch.searchByNameResult.SearchResultByNameActivity"
+            android:parentActivityName=".presentation.id_search.IDSearchActivity" />
+        <activity android:name=".presentation.name_search.search_by_name_result.SearchResultByNameActivity"
             android:screenOrientation="portrait"
-            android:parentActivityName=".presentation.nameSearch.NameSearchActivity" />
+            android:parentActivityName=".presentation.name_search.NameSearchActivity" />
     </application>
 
 </manifest>
